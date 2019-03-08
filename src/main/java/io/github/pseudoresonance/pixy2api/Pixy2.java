@@ -403,7 +403,8 @@ public class Pixy2 {
 
 			type = buffer[0] & 0xff;
 			length = buffer[1] & 0xff;
-
+			System.out.println(length);
+			
 			csSerial = ((buffer[3] & 0xff) << 8) | (buffer[2] & 0xff);
 
 			res = link.receive(buffer, length, csCalc);
@@ -417,8 +418,9 @@ public class Pixy2 {
 			if (res < 0)
 				return res;
 
-			type = buffer[0];
-			length = buffer[1];
+			type = buffer[0] & 0xff;
+			length = buffer[1] & 0xff;
+			System.out.println(length); 
 
 			res = link.receive(buffer, length);
 
